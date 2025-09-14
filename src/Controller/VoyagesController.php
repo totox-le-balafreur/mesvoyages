@@ -11,16 +11,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * Description of AcceuilController
- *
- * @author Thomas
- */
-class AcceuilController extends AbstractController {
-    
-    #[Route('/', name: 'accueil')]
-    public function index (): Response{
-        return $this->render ("pages/accueil.html.twig");
-        
+class VoyagesController extends AbstractController {
+    #[Route('/voyages', name: 'voyages')]
+    public function index():Response{
+        return $this->render("pages/voyages.html.twig");
     }
 }

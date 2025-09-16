@@ -14,15 +14,19 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class VoyagesController extends AbstractController {
     #[Route('/voyages', name: 'voyages')]
-    #[Route('/voyages', name: 'voyages')]
-public function index(): Response {
-    $visites = $this->repository->findAll(); // récupère toutes les visites
-
-    return $this->render("pages/voyages.html.twig", [
-        "visites" => $visites
-    ]);
+    #[Route('/voyages/tri/{champ}/{ordre}', name:'voyages.sort')]
+    public function index(): Response {
+        $visites = $this->repository->findAllOrderBy('datecreation','DESC'); // récupère toutes les visites
+        return $this->render("pages/voyages.html.twig", [
+            "visites" => $visites
+        ]);
 }
-
+    public function sort($champ,$ordre): Response{
+        $visites = $this->repository->findAllOrderBy('datecreation','DESC'); // récupère toutes les visites
+        return $this->render("pages/voyages.html.twig", [
+            "visites" => $visites
+        ]);
+    }
     /**
     * 
     * @var VisiteRepository

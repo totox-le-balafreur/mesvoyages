@@ -16,6 +16,25 @@ class EnvironnementRepository extends ServiceEntityRepository
         parent::__construct($registry, Environnement::class);
     }
 
+     /**
+         * Ajoute ou modifie un environnement
+         * @param Visite $environnement
+         * return void
+         */
+        public function add(Environnement $environnement): void {
+            $this->getEntityManager()->persist($environnement);    
+            $this->getEntityManager()->flush();
+        }
+        /**
+         * Supprime un environnement
+         * @param Visite $environnement
+         * return void
+         */
+        public function remove(Environnement $environnement): void
+        {
+            $this->getEntityManager()->remove($environnement);    
+            $this->getEntityManager()->flush();
+        }
     //    /**
     //     * @return Environnement[] Returns an array of Environnement objects
     //     */
